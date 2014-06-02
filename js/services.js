@@ -2,6 +2,15 @@ var quizApp = angular.module('quizApp');
 
 
 quizApp.service('loginService', function($http, $q) {
+    var email = "";
+
+    this.setEmail = function(emailAddress) {
+        this.email = emailAddress;
+    };
+
+    this.getEmail = function() {
+        return this.email;
+    };
 
     this.login = function(user) {
         var defer = $q.defer();
@@ -30,7 +39,8 @@ quizApp.service('loginService', function($http, $q) {
         });
 
         return defer.promise;
-    }
+    };
+
 });
 
 

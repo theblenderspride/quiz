@@ -16,11 +16,24 @@
 	$result1 = mysql_query("SELECT * FROM users WHERE email='" . $_POST["email"] . "' and password = '". $pwd."'");
 	$row1  = mysql_fetch_array($result1);
 	
+	$res;
+
+
+echo '{';
 	if (is_array($row1)) {	
     	$_SESSION["email"] = $row1['email'];
-    	echo 'true';   		
+    	 echo '"status":"true",';
+    	 echo '"email":"'. $row1['email'].'"';
+    	// $res->status = 'true';	
+    	// $res->email = $row1['email'];
     } else {
-	    echo 'false';
+	  	 echo '"status":"false"';            
 	}
+
+
+            
+            echo '}';  
+
+
 
 ?>

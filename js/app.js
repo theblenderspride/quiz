@@ -1,6 +1,6 @@
 var quizApp = angular.module('quizApp', [
     'ngRoute',
-    'quizAppControllers'
+    'quizAppControllers',
 ]);
 
 function checkCookie(key) {
@@ -9,11 +9,8 @@ function checkCookie(key) {
 
 quizApp.config([
     '$routeProvider',
-    function($routeProvider) {
+    function($routeProvider, loginService) {
         var email = checkCookie("email");
-        if (!email) {
-            window.location.href = '#/login';
-        }
 
         $routeProvider.
         when('/login', {
@@ -28,8 +25,14 @@ quizApp.config([
             templateUrl: "partials/quiz.html",
             controller: 'QuizCtrl',
             resolve: {
-                initializeData: function($q, $timeout, quizService) {
-                    return quizService.getQuestions();
+                initializeData: function($q, $timeout, loginService, quizService) {
+                    if (!loginService.getEmail() && !email) {
+                        window.location.href = '#/login';
+                    } else {
+                        if (email)
+                            loginService.setEmail(email);
+                        return quizService.getQuestions();
+                    }
                 }
             }
         }).
@@ -37,5 +40,4 @@ quizApp.config([
             redirectTo: '/login'
         });
     }
-
 ]);

@@ -3,6 +3,7 @@ var quizAppControllers = angular.module("quizAppControllers", []);
 
 quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
     '$http', 'loginService',
+
     function($scope, $window, $http, loginService) {
         function validateForm() {
             var isValid = true;
@@ -28,11 +29,12 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
 
                 loginService.login(user)
                     .then(function(data) {
-                        if (data === "true")
+                        if (data.status === "true") {
+                            loginService.setEmail(data.email)
                             window.location = "#/quiz";
-                        else
+                        } else {
                             alert("Login invalid");
-
+                        }
                     }, function(error) {
                         alert(error);
                     });
@@ -50,13 +52,12 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initia
     function($scope, $window, $http, initializeData, loginService) {
 
         $scope.questions = initializeData.questions;
+        $scope.email = loginService.getEmail();
 
         var currentIndex = 0;
         $scope.currentQuestion = $scope.questions[0];
         $scope.next = "continue";
         $scope.isComplete = false;
-
-        $scope.email = checkCookie("email");
 
         $scope.logout = function() {
             console.log("from logout: ", loginService.logout());
