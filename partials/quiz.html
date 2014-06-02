@@ -1,8 +1,10 @@
 <div class="quiz">
 	<header>
 		Hi {{email}}
-		<button ng-click="logout()">Logout</button>
+		<a ng-click="logout()" href="#">Logout</a>
 	</header>
+
+	<div class="clearfix"></div>
 
 	<div class="question" ng-hide="isComplete">
 		<div class="title">

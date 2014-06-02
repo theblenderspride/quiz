@@ -3,23 +3,24 @@
 
  	$_POST = json_decode(file_get_contents('php://input'), true);
 
-	$con = mysql_connect("localhost","root","");	
+	$con = mysql_connect("localhost","html5plu_db","q(Lld3GIOd~z");	
 	if (!$con)
 	{
 		die('Could not connect: ' . mysql_error());
 	}
 
-	mysql_select_db("quiz", $con);
+	mysql_select_db("html5plu_db", $con);
 
 	$pwd = $_POST["password"];
 	
-	$result1 = mysql_query("SELECT * FROM users WHERE email='" . $_POST["email"] . "' and password = '". $pwd."'");
+	$result1 = mysql_query("SELECT * FROM quiz_users WHERE email='" . $_POST["email"] . "' and password = '". $pwd."'");
 	$row1  = mysql_fetch_array($result1);
 	
 	$res;
 
 
-echo '{';
+	echo '{';
+
 	if (is_array($row1)) {	
     	$_SESSION["email"] = $row1['email'];
     	 echo '"status":"true",';
@@ -29,11 +30,7 @@ echo '{';
     } else {
 	  	 echo '"status":"false"';            
 	}
-
-
-            
-            echo '}';  
-
-
+    
+    echo '}';  
 
 ?>

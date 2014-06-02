@@ -41,6 +41,21 @@ quizApp.service('loginService', function($http, $q) {
         return defer.promise;
     };
 
+    this.register = function(user) {
+        var defer = $q.defer();
+        $http({
+            method: "post",
+            url: "register.php",
+            data: JSON.stringify(user)
+        }).success(function(data) {
+            defer.resolve(data);
+        }).error(function() {
+            defer.reject('could not logout');
+        });
+
+        return defer.promise;
+    };
+
 });
 
 

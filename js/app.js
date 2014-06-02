@@ -9,7 +9,7 @@ function checkCookie(key) {
 
 quizApp.config([
     '$routeProvider',
-    function($routeProvider, loginService) {
+    function($routeProvider) {
         var email = checkCookie("email");
 
         $routeProvider.

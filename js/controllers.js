@@ -1,18 +1,47 @@
 var quizAppControllers = angular.module("quizAppControllers", []);
 
 
-quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
+quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
     '$http', 'loginService',
 
-    function($scope, $window, $http, loginService) {
-        function validateForm() {
+    function($scope, $rootScope, $window, $http, loginService) {
+        if ($rootScope.loginUser && $rootScope.loginUser.email) {
+            $scope.loginEmail = $rootScope.loginUser.email;
+        }
+        if ($rootScope.loginUser && $rootScope.loginUser.password) {
+            $scope.loginPassword = $rootScope.loginUser.password;
+        }
+
+        if ($rootScope.registerUser && $rootScope.registerUser.email) {
+            $scope.registerEmail = $rootScope.registerUser.email;
+        }
+        if ($rootScope.registerUser && $rootScope.registerUser.password) {
+            $scope.registerPassword = $rootScope.registerUser.password;
+        }
+
+        function validateLoginForm() {
             var isValid = true;
             $scope.emailError = null;
             $scope.passwordError = null;
-            if (!$scope.email) {
+            if (!$scope.loginEmail) {
                 $scope.emailError = "Please provide an email";
             }
-            if (!$scope.password) {
+            if (!$scope.loginPassword) {
+                $scope.passwordError = "Please provide a password";
+            }
+            if ($scope.emailError || $scope.passwordError)
+                isValid = false;
+            return isValid;
+        }
+
+        function validateRegisterForm() {
+            var isValid = true;
+            $scope.emailError = null;
+            $scope.passwordError = null;
+            if (!$scope.registerEmail) {
+                $scope.emailError = "Please provide an email";
+            }
+            if (!$scope.registerPassword) {
                 $scope.passwordError = "Please provide a password";
             }
             if ($scope.emailError || $scope.passwordError)
@@ -21,17 +50,19 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
         }
 
         $scope.login = function() {
-            if (validateForm()) {
+            if (validateLoginForm()) {
                 var user = {
-                    email: $scope.email,
-                    password: $scope.password
+                    email: $scope.loginEmail,
+                    password: $scope.loginPassword
                 };
+
+                $rootScope.loginUser = user;
 
                 loginService.login(user)
                     .then(function(data) {
                         if (data.status === "true") {
                             loginService.setEmail(data.email)
-                            window.location = "#/quiz";
+                            $window.location = "#/quiz";
                         } else {
                             alert("Login invalid");
                         }
@@ -42,7 +73,28 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
         };
 
         $scope.register = function() {
-            validateForm();
+            if (validateRegisterForm()) {
+                var user = {
+                    email: $scope.registerEmail,
+                    password: $scope.registerPassword
+                };
+
+                $rootScope.registerUser = user;
+
+                $scope.registrationSuccessMessage = null;
+                $scope.registrationErrorMessage = null;
+
+                loginService.register(user)
+                    .then(function(data) {
+                        if (data === "true") {
+                            $scope.registrationSuccessMessage = "Registration succesfull, please login now";
+                        } else {
+                            $scope.registrationErrorMessage = "Registration failed";
+                        }
+                    }, function(error) {
+                        alert(error);
+                    });
+            }
         };
 
     }

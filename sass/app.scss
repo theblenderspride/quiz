@@ -6,14 +6,20 @@ body {
 	margin-top: 30px;
 }
 header  {
-
-	button {
-		margin-left: 20px;
+	text-align: center;
+	
+	a {	
+		margin-left: 40px;
 	}
+}
+
+.clearfix {
+	clear: both;
 }
 
 input[type="radio"] {
 	border: none;
+	background-color: #F00 !important;
 	box-shadow: none;
 }
 
@@ -70,7 +76,10 @@ input[type="radio"] {
 	}
 }
 
-
+a {
+	text-decoration: none;
+	color: blue;	
+}
 
 .question { 
 	text-align: left;

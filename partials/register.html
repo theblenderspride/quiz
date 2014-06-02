@@ -10,13 +10,15 @@
 	</div>
 	<form>
 		<div>			
-			<input ng-model="email" size="30" placeholder="Email">		
+			<input ng-model="registerEmail" size="30" placeholder="Email">		
 			<label class="error" ng-show="emailError">{{emailError}}</label>
 		</div>
 		<div>
-			<input ng-model="password" size="30" placeholder="Password" type="password">		
+			<input ng-model="registerPassword" size="30" placeholder="Password" type="password">		
 			<label class="error" ng-show="passwordError">{{passwordError}}</label>
 		</div>
+		<p ng-show="registrationSuccessMessage" class="success">{{registrationSuccessMessage}}</p>
+		<p ng-show="registrationErrorMessage" class="error">{{registrationErrorMessage}}</p>
 		<input type="button" class="btn-a" ng-click="register()" value="Register">
 	</form>
 
