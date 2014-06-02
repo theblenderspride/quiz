@@ -1,0 +1,23 @@
+<div class="register-form">
+
+	<div class="navbar">
+		<a href="#/login">
+			Login
+		</a>
+		<a href="#/register">
+			Register
+		</a>
+	</div>
+	<form>
+		<div>			
+			<input ng-model="email" size="30" placeholder="Email">		
+			<label class="error" ng-show="emailError">{{emailError}}</label>
+		</div>
+		<div>
+			<input ng-model="password" size="30" placeholder="Password" type="password">		
+			<label class="error" ng-show="passwordError">{{passwordError}}</label>
+		</div>
+		<input type="button" class="btn-a" ng-click="register()" value="Register">
+	</form>
+
+</div>

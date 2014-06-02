@@ -1,0 +1,50 @@
+<div class="quiz">
+	<header>
+		Hi {{email}}
+		<button ng-click="logout()">Logout</button>
+	</header>
+
+	<div class="question" ng-hide="isComplete">
+		<div class="title">
+			{{currentQuestion.question}}		
+		</div>
+		<div class="choices">
+			<div ng-repeat="answer in currentQuestion.choices">			
+				<label>
+					<input type="radio" ng-model="currentQuestion.selectedAnswer" name="name" value="{{answer}}" required />
+	            	{{answer}}
+	           </label>
+	        </div>
+			<input type="button" value="{{next}}" ng-click="forward()">
+		</div>
+	</div>
+
+	<div class="results" ng-show="isComplete">
+		<p class="heading">You Scored: {{percentage}}</p>
+
+		<div class="question" ng-repeat="question in questions">
+			<div class="question">
+				{{question.question}}		
+			</div>
+			<div ng-class="question.answerClass">	
+				<p>
+					{{question.answerMessage}}
+				</p>
+				<p>
+					{{question.selectedAnswer}}
+				</p>
+				<div ng-hide="question.isCorrectAnswer">
+					<p>
+						{{question.correcAnswerMessage}}
+
+					</p>
+					<p>
+						{{question.correct}}
+					</p>
+				</div>
+	        </div>
+		</div>
+
+	</div>
+
+</div>

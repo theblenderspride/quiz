@@ -1,0 +1,110 @@
+@import "compass/reset";
+
+body {
+	font-family: Papyrus, Lucida Sans Unicode, Geneva, sans-serif;
+	text-align: center;
+	margin-top: 30px;
+}
+header  {
+
+	button {
+		margin-left: 20px;
+	}
+}
+
+input[type="radio"] {
+	border: none;
+	box-shadow: none;
+}
+
+.login-form  ,
+.register-form  {
+	margin: 0 auto;
+	max-width: 500px;
+	min-width: 500px;
+
+	.navbar {
+		margin: 0;
+		width: 500px;
+		a {
+			margin-right: 20px;
+		}
+	}
+
+	form {
+		width: 100%;
+		margin-top: 150px;
+		padding: 20px;
+		background: #EFEFEF;
+		text-align: left;
+		div { 
+			width: 100%;
+		}
+		input {
+			width: 90%;
+			padding: 10px;		
+			border:none;		    
+		    margin: 10px;
+		    box-sizing:border-box;
+    		-moz-box-sizing:border-box;
+    		-webkit-box-sizing:border-box;
+
+		    &[type="button"] {
+		    	background-color: #9b58b5;
+		    	color: #FFF;
+		    }
+		}
+		div {
+			text-align: left;
+		}
+	}
+}
+
+.quiz {
+	margin: 20px auto;	
+	width: 80%;
+	text-align: center;
+	header {margin-bottom: 40px;}
+	input {
+		margin: 10px;
+	}
+}
+
+
+
+.question { 
+	text-align: left;
+	width: 100%;	
+	.title {
+		text-align: center;
+		padding: 10px 0;
+	}
+	.choices {
+		padding: 20px;
+		background-color: #ededed;	
+	}
+}
+
+.results {
+	.heading {
+		font-size: 24px;
+	}
+	.question {
+		padding: 10px 0;
+	}
+	p {
+		padding: 10px 0;
+	}
+	.correct {
+		background-color: #e9f3e8;
+		padding: 20px;
+	}
+	.incorrect {
+		background-color: #f5e7e7;
+		padding: 20px;
+	}
+}
+
+.error {
+	color: #F00;
+}
