@@ -2,8 +2,8 @@ var quizAppControllers = angular.module("quizAppControllers", []);
 
 
 quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
-    '$http',
-    function($scope, $window, $http) {
+    '$http', 'loginService',
+    function($scope, $window, $http, loginService) {
         function validateForm() {
             var isValid = true;
             $scope.emailError = null;
@@ -25,22 +25,17 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
                     email: $scope.email,
                     password: $scope.password
                 };
-                $.ajax({
-                    method: "POST",
-                    url: 'login.php',
-                    data: user,
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                }).done(function(data) {
-                    if (data === "true") {
-                        window.location = "#/quiz";
-                    } else {
-                        alert("Login invalid");
-                    }
-                }).fail(function(error) {
-                    alet(error);
-                });
+
+                loginService.login(user)
+                    .then(function(data) {
+                        if (data === "true")
+                            window.location = "#/quiz";
+                        else
+                            alert("Login invalid");
+
+                    }, function(error) {
+                        alert(error);
+                    });
             }
         };
 
@@ -51,37 +46,10 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$window',
     }
 ]);
 
-quizAppControllers.controller("QuizCtrl", ['$scope', '$window',
-    function($scope, $window) {
-        $scope.questions = [{
-            "question": "Which is not an advantage of using a closure?",
-            "selectedAnswer": "",
-            "choices": [
-                "Prevent pollution of global scope",
-                "Encapsulation",
-                "Private properties and methods",
-                "Allow conditional use of ‘strict mode’"
-            ],
-            "correct": "Allow conditional use of ‘strict mode’"
-        }, {
-            "question": "To create a columned list of twoline email subjects and dates for a masterdetail view, which are the most semantically correct?",
-            "selectedAnswer": "",
-            "choices": ["<div>+<span>", "<tr>+<td>", "<ul>+<li>", "<p>+<br>", "none of these", "all of these"],
-            "correct": "<div>+<span>"
-        }, {
-            "question": "To pass an array of strings to a function, you should not use...",
-            "selectedAnswer": "",
-            "choices": ["fn.apply(this, stringsArray)", "fn.call(this, stringsArray)", "fn.bind(this, stringsArray)"],
-            "correct": "fn.bind(this, stringsArray)"
-        }, {
-            "question": "____ and ____ would be the HTML tags you would use to display a menu item and its description",
-            "selectedAnswer": "",
-        }, {
-            "question": "Given <div id=”outer”><div class=”inner”></div></div>, which of these two is the most performant way to select the inner div?",
-            "choices": ['getElementById("outer ").children[0]', 'getElementsByClassName("inner ")[0]'],
-            "selectedAnswer": "",
-            "correct": 'getElementById("outer ").children[0]'
-        }];
+quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initializeData', 'loginService',
+    function($scope, $window, $http, initializeData, loginService) {
+
+        $scope.questions = initializeData.questions;
 
         var currentIndex = 0;
         $scope.currentQuestion = $scope.questions[0];
@@ -91,14 +59,14 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window',
         $scope.email = checkCookie("email");
 
         $scope.logout = function() {
-            $.ajax({
-                method: "POST",
-                url: 'logout.php'
-            }).done(function(data) {
-                $window.location = "";
-            }).fail(function(error) {
-                alet(error);
-            });
+            console.log("from logout: ", loginService.logout());
+
+            loginService.logout()
+                .then(function(data) {
+                    $window.location = "";
+                }, function(error) {
+                    alert(error);
+                });
         }
 
         $scope.forward = function() {

@@ -26,7 +26,12 @@ quizApp.config([
         }).
         when('/quiz', {
             templateUrl: "partials/quiz.html",
-            controller: 'QuizCtrl'
+            controller: 'QuizCtrl',
+            resolve: {
+                initializeData: function($q, $timeout, quizService) {
+                    return quizService.getQuestions();
+                }
+            }
         }).
         otherwise({
             redirectTo: '/login'

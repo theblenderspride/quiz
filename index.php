@@ -18,10 +18,9 @@
 
     <script src="lib/angular.js"></script>
     <script src="lib/angular-route.js"></script>
-    <script src="lib/angular-resource.js"></script>    
-    <script src="lib/jquery.js"></script>   
        
     <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
    
 </head>

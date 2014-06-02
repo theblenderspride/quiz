@@ -1,6 +1,8 @@
 <?php
  	session_start();
 
+ 	$_POST = json_decode(file_get_contents('php://input'), true);
+
 	$con = mysql_connect("localhost","root","");	
 	if (!$con)
 	{
