@@ -1,12 +1,5 @@
 {
     "questions": [{
-        "question": ["$", "and", "$", "would be the HTML tags you would use to display a menu item and its description"],
-        "selectedAnswers": ["", ""],
-        "type": "input",
-        "correct": [
-            "ul", "li"
-        ]
-    }, {
         "question": "Which is not an advantage of using a closure?",
         "selectedAnswer": "",
         "choices": [
@@ -37,6 +30,13 @@
             "fn.bind(this, stringsArray)"
         ],
         "correct": "fn.bind(this, stringsArray)"
+    }, {
+        "question": ["$", "and", "$", "would be the HTML tags you would use to display a menu item and its description"],
+        "selectedAnswers": ["", ""],
+        "type": "input",
+        "correct": [
+            "ul", "li"
+        ]
     }, {
         "question": "Given <div id=”outer”><div class=”inner”></div></div>, which of these two is the most performant way to select the inner div?",
         "choices": [
