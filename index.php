@@ -3,9 +3,8 @@
     if(isset($_SESSION["email"]) && $_SESSION["email"]) {
         $expire = time() + 60 * 60 * 24 * 2; // 2 days
         setcookie("email", $_SESSION["email"], $expire);
-            //setcookie("email", "test", $expire);
     } else {
-            setcookie('email', '', time() - 3600);  
+        setcookie('email', '', time() - 3600);  
     }
 ?> 
 
@@ -17,11 +16,9 @@
     <link rel="stylesheet" href="css/app.css">
 
     <script src="lib/angular.js"></script>
-    <script src="lib/angular-route.js"></script>       
-    
+    <script src="lib/angular-route.js"></script>           
     <script src="js/app.js"></script>    
-    <script src="js/services.js"></script>
-    
+    <script src="js/services.js"></script>    
     <script src="js/controllers.js"></script>
    
 </head>

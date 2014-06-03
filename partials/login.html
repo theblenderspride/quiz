@@ -18,6 +18,8 @@
 			<input ng-model="loginPassword" size="30" placeholder="Password" type="password">		
 			<label class="error" ng-show="passwordError">{{passwordError}}</label>
 		</div>		
+		<p ng-show="loginErrorMessage" class="error">{{loginErrorMessage}}</p>
+
 		<input type="button" class="btn-a" ng-click="login()" value="Sign In">				
 	</form>
 

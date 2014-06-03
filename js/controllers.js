@@ -1,10 +1,11 @@
 var quizAppControllers = angular.module("quizAppControllers", []);
 
-
+// Login controller
 quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
     '$http', 'loginService',
 
     function($scope, $rootScope, $window, $http, loginService) {
+        // for persiting email and password between routing
         if ($rootScope.loginUser && $rootScope.loginUser.email) {
             $scope.loginEmail = $rootScope.loginUser.email;
         }
@@ -19,6 +20,7 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
             $scope.registerPassword = $rootScope.registerUser.password;
         }
 
+        // validates the login form
         function validateLoginForm() {
             var isValid = true;
             $scope.emailError = null;
@@ -34,6 +36,7 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
             return isValid;
         }
 
+        // validates the registration form
         function validateRegisterForm() {
             var isValid = true;
             $scope.emailError = null;
@@ -49,6 +52,7 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
             return isValid;
         }
 
+        // for handling login operation for user
         $scope.login = function() {
             if (validateLoginForm()) {
                 var user = {
@@ -57,6 +61,7 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
                 };
 
                 $rootScope.loginUser = user;
+                $scope.loginErrorMessage = "";
 
                 loginService.login(user)
                     .then(function(data) {
@@ -64,14 +69,15 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
                             loginService.setEmail(data.email)
                             $window.location = "#/quiz";
                         } else {
-                            alert("Login invalid");
+                            $scope.loginErrorMessage = "Login invalid, please try again";
                         }
                     }, function(error) {
-                        alert(error);
+                        $scope.loginErrorMessage = error;
                     });
             }
         };
 
+        // for handling registration of user
         $scope.register = function() {
             if (validateRegisterForm()) {
                 var user = {
@@ -89,10 +95,10 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
                         if (data === "true") {
                             $scope.registrationSuccessMessage = "Registration succesfull, please login now";
                         } else {
-                            $scope.registrationErrorMessage = "Registration failed";
+                            $scope.registrationErrorMessage = "Registration failed, please try again";
                         }
                     }, function(error) {
-                        alert(error);
+                        $scope.registrationErrorMessage = error;
                     });
             }
         };
@@ -100,6 +106,8 @@ quizAppControllers.controller("LoginCtrl", ['$scope', '$rootScope', '$window',
     }
 ]);
 
+
+// Quiz controller - handles displaying questions and shows the results at the end of the quiz
 quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initializeData', 'loginService',
     function($scope, $window, $http, initializeData, loginService) {
 
@@ -111,6 +119,7 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initia
         $scope.next = "continue";
         $scope.isComplete = false;
 
+        // for handling logout operation
         $scope.logout = function() {
             console.log("from logout: ", loginService.logout());
 
@@ -122,6 +131,7 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initia
                 });
         }
 
+        // for handling next question
         $scope.forward = function() {
             if ($scope.next == "Finish") {
                 generateAnswersUI();

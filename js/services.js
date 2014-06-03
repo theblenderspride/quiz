@@ -1,7 +1,9 @@
 var quizApp = angular.module('quizApp');
 
-
+// Login service- supports login(), logout() and register() operations and few helpers like setEmail() and getEmail()
+// Login Service explicitly uses $q.defer(), to implement promises
 quizApp.service('loginService', function($http, $q) {
+    // stores the current email of the user
     var email = "";
 
     this.setEmail = function(emailAddress) {
@@ -12,11 +14,12 @@ quizApp.service('loginService', function($http, $q) {
         return this.email;
     };
 
+    // The actual user login implementaion
     this.login = function(user) {
         var defer = $q.defer();
         $http({
             method: "post",
-            url: "login.php",
+            url: "server/login.php",
             data: JSON.stringify(user)
         }).success(function(data) {
             defer.resolve(data);
@@ -27,11 +30,12 @@ quizApp.service('loginService', function($http, $q) {
         return defer.promise;
     }
 
+    // The actual user logout implementaion
     this.logout = function() {
         var defer = $q.defer();
         $http({
             method: "post",
-            url: "logout.php",
+            url: "server/logout.php",
         }).success(function(data) {
             defer.resolve(data);
         }).error(function() {
@@ -41,11 +45,12 @@ quizApp.service('loginService', function($http, $q) {
         return defer.promise;
     };
 
+    // The actual user registration implementaion
     this.register = function(user) {
         var defer = $q.defer();
         $http({
             method: "post",
-            url: "register.php",
+            url: "server/register.php",
             data: JSON.stringify(user)
         }).success(function(data) {
             defer.resolve(data);
@@ -58,13 +63,13 @@ quizApp.service('loginService', function($http, $q) {
 
 });
 
-
+// Quiz Service - supports getQuestions() operation which returns the set of questions with answers
 quizApp.service('quizService', function($http, $q) {
 
     this.getQuestions = function() {
         var defer = $q.defer();
 
-        $http.get('quiz.json')
+        $http.get('data/quiz.json')
             .success(function(data) {
                 defer.resolve(data);
             })
