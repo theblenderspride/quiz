@@ -7,10 +7,21 @@
 	<div class="clearfix"></div>
 
 	<div class="question" ng-hide="isComplete">
-		<div class="title">
+		<div class="title" ng-show="currentQuestion.type">
+			<div class="inlineQuestion" ng-repeat="quest in currentQuestion.question track by $index">			
+				<input ng-show="quest=='$'" ng-model="currentQuestion.selectedAnswers[$index]">
+				<span ng-hide="quest=='$'">
+					{{quest}}
+	           </span>
+	        </div>
+			<input type="button" value="{{next}}" ng-click="forward()">
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="title" ng-hide="currentQuestion.type">
 			{{currentQuestion.question}}		
 		</div>
-		<div class="choices">
+		<div class="choices" ng-hide="currentQuestion.type">
 			<div ng-repeat="answer in currentQuestion.choices">			
 				<label>
 					<input type="radio" ng-model="currentQuestion.selectedAnswer" name="name" value="{{answer}}" required />
@@ -25,10 +36,37 @@
 		<p class="heading">You Scored: {{percentage}}</p>
 
 		<div class="question" ng-repeat="question in questions">
-			<div class="question">
+
+			<div class="title" ng-show="question.type">
+				<div class="inlineQuestion" ng-repeat="quest in question.question track by $index">			
+					<input readonly ng-show="quest=='$'">
+					<span ng-hide="quest=='$'">
+						{{quest}}
+		           </span>
+		        </div>
+			</div>
+			<div class="clearfix"></div>
+			<div ng-class="question.answerClass"  ng-show="question.type">	
+				<p>
+					{{question.answerMessage}}
+				</p>
+				<p ng-repeat="answ in question.selectedAnswers track by $index">
+					{{answ}}	
+				</p>
+				<div ng-hide="question.isCorrectAnswer">
+					<p>
+						{{question.correcAnswerMessage}}
+					</p>
+					<p>
+						{{question.correct}}
+					</p>
+				</div>
+	        </div>
+
+			<div class="question" ng-hide="question.type">
 				{{question.question}}		
 			</div>
-			<div ng-class="question.answerClass">	
+			<div ng-class="question.answerClass"  ng-hide="question.type">	
 				<p>
 					{{question.answerMessage}}
 				</p>
@@ -38,7 +76,6 @@
 				<div ng-hide="question.isCorrectAnswer">
 					<p>
 						{{question.correcAnswerMessage}}
-
 					</p>
 					<p>
 						{{question.correct}}

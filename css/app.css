@@ -154,30 +154,35 @@ input[type="radio"] {
 .quiz input {
   margin: 10px;
 }
+/* line 75, ../sass/app.scss */
+.quiz .inlineQuestion {
+  float: left;
+  line-height: 40px;
+}
 
-/* line 77, ../sass/app.scss */
+/* line 81, ../sass/app.scss */
 a {
   text-decoration: none;
   color: #217cd1;
 }
 
-/* line 82, ../sass/app.scss */
+/* line 86, ../sass/app.scss */
 .question {
   text-align: left;
   width: 100%;
 }
-/* line 85, ../sass/app.scss */
+/* line 89, ../sass/app.scss */
 .question .title {
   text-align: center;
   padding: 10px 0;
 }
-/* line 89, ../sass/app.scss */
+/* line 93, ../sass/app.scss */
 .question .choices {
   padding: 20px;
   background-color: #ededed;
 }
 
-/* line 96, ../sass/app.scss */
+/* line 100, ../sass/app.scss */
 form input[type="button"], .question input[type="button"] {
   padding: 10px;
   width: 90%;
@@ -185,30 +190,30 @@ form input[type="button"], .question input[type="button"] {
   color: #FFF;
 }
 
-/* line 105, ../sass/app.scss */
+/* line 109, ../sass/app.scss */
 .results .heading {
   font-size: 24px;
 }
-/* line 108, ../sass/app.scss */
+/* line 112, ../sass/app.scss */
 .results .question {
   padding: 10px 0;
 }
-/* line 111, ../sass/app.scss */
+/* line 115, ../sass/app.scss */
 .results p {
   padding: 10px 0;
 }
-/* line 114, ../sass/app.scss */
+/* line 118, ../sass/app.scss */
 .results .correct {
   background-color: #e9f3e8;
   padding: 20px;
 }
-/* line 118, ../sass/app.scss */
+/* line 122, ../sass/app.scss */
 .results .incorrect {
   background-color: #f5e7e7;
   padding: 20px;
 }
 
-/* line 124, ../sass/app.scss */
+/* line 128, ../sass/app.scss */
 .error {
   color: #F00;
 }

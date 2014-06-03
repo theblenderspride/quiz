@@ -116,7 +116,12 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initia
 
         var currentIndex = 0;
         $scope.currentQuestion = $scope.questions[0];
-        $scope.next = "continue";
+
+        if ($scope.questions.length == 1)
+            $scope.next = "Finish";
+        else
+            $scope.next = "continue";
+
         $scope.isComplete = false;
 
         // for handling logout operation
@@ -149,11 +154,25 @@ quizAppControllers.controller("QuizCtrl", ['$scope', '$window', '$http', 'initia
             var i,
                 correctAnswers = 0,
                 question,
+                isCorrectAnswer,
                 len = $scope.questions.length;
 
             for (i = 0; i < len; i++) {
                 question = $scope.questions[i];
-                if (question.selectedAnswer == question.correct) {
+                if (question.type) {
+                    question.selectedAnswers.splice(1, 1);
+                    var j, l = question.selectedAnswers.length;
+                    for (j = 0; j < l; j++) {
+                        if (question.selectedAnswers[j] !== question.correct[j]) {
+                            break;
+                        }
+                    }
+                    isCorrectAnswer = (j == l);
+                } else {
+                    isCorrectAnswer = (question.selectedAnswer == question.correct);
+                }
+
+                if (isCorrectAnswer) {
                     correctAnswers++;
                     question.isCorrectAnswer = true;
                     question.answerClass = "correct";

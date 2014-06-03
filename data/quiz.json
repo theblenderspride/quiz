@@ -1,7 +1,7 @@
 {
     "questions": [{
         "question": ["$", "and", "$", "would be the HTML tags you would use to display a menu item and its description"],
-        "selectedAnswer": "",
+        "selectedAnswers": ["", ""],
         "type": "input",
         "correct": [
             "ul", "li"
