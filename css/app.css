@@ -188,32 +188,33 @@ form input[type="button"], .question input[type="button"] {
   width: 90%;
   background-color: #9b58b5;
   color: #FFF;
+  outline: none;
 }
 
-/* line 109, ../sass/app.scss */
+/* line 110, ../sass/app.scss */
 .results .heading {
   font-size: 24px;
 }
-/* line 112, ../sass/app.scss */
+/* line 113, ../sass/app.scss */
 .results .question {
   padding: 10px 0;
 }
-/* line 115, ../sass/app.scss */
+/* line 116, ../sass/app.scss */
 .results p {
   padding: 10px 0;
 }
-/* line 118, ../sass/app.scss */
+/* line 119, ../sass/app.scss */
 .results .correct {
   background-color: #e9f3e8;
   padding: 20px;
 }
-/* line 122, ../sass/app.scss */
+/* line 123, ../sass/app.scss */
 .results .incorrect {
   background-color: #f5e7e7;
   padding: 20px;
 }
 
-/* line 128, ../sass/app.scss */
+/* line 129, ../sass/app.scss */
 .error {
   color: #F00;
 }
