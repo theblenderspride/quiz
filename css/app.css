@@ -1,4 +1,4 @@
-/* line 17, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -118,12 +118,7 @@ input[type="radio"] {
   background: #EFEFEF;
   text-align: left;
 }
-/* line 46, ../sass/app.scss */
-.login-form form div,
-.register-form form div {
-  width: 100%;
-}
-/* line 49, ../sass/app.scss */
+/* line 47, ../sass/app.scss */
 .login-form form input,
 .register-form form input {
   width: 90%;
@@ -134,79 +129,86 @@ input[type="radio"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-/* line 58, ../sass/app.scss */
-.login-form form input[type="button"],
-.register-form form input[type="button"] {
-  background-color: #9b58b5;
-  color: #FFF;
+/* line 57, ../sass/app.scss */
+.login-form form div,
+.register-form form div {
+  width: 100%;
 }
-/* line 63, ../sass/app.scss */
+/* line 61, ../sass/app.scss */
 .login-form form div,
 .register-form form div {
   text-align: left;
 }
 
-/* line 69, ../sass/app.scss */
+/* line 67, ../sass/app.scss */
 .quiz {
   margin: 20px auto;
   width: 80%;
   text-align: center;
 }
-/* line 73, ../sass/app.scss */
+/* line 71, ../sass/app.scss */
 .quiz header {
   margin-bottom: 40px;
 }
-/* line 74, ../sass/app.scss */
+/* line 72, ../sass/app.scss */
 .quiz input {
   margin: 10px;
 }
 
-/* line 79, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 a {
   text-decoration: none;
-  color: blue;
+  color: #217cd1;
 }
 
-/* line 84, ../sass/app.scss */
+/* line 82, ../sass/app.scss */
 .question {
   text-align: left;
   width: 100%;
 }
-/* line 87, ../sass/app.scss */
+/* line 85, ../sass/app.scss */
 .question .title {
   text-align: center;
   padding: 10px 0;
 }
-/* line 91, ../sass/app.scss */
+/* line 89, ../sass/app.scss */
 .question .choices {
   padding: 20px;
   background-color: #ededed;
 }
 
-/* line 98, ../sass/app.scss */
+/* line 96, ../sass/app.scss */
+form input[type="button"], .question input[type="button"] {
+  padding: 10px;
+  width: 90%;
+  background-color: #9b58b5;
+  color: #FFF;
+}
+
+/* line 105, ../sass/app.scss */
 .results .heading {
   font-size: 24px;
 }
-/* line 101, ../sass/app.scss */
+/* line 108, ../sass/app.scss */
 .results .question {
   padding: 10px 0;
 }
-/* line 104, ../sass/app.scss */
+/* line 111, ../sass/app.scss */
 .results p {
   padding: 10px 0;
 }
-/* line 107, ../sass/app.scss */
+/* line 114, ../sass/app.scss */
 .results .correct {
   background-color: #e9f3e8;
   padding: 20px;
 }
-/* line 111, ../sass/app.scss */
+/* line 118, ../sass/app.scss */
 .results .incorrect {
   background-color: #f5e7e7;
   padding: 20px;
 }
 
-/* line 117, ../sass/app.scss */
+/* line 124, ../sass/app.scss */
 .error {
   color: #F00;
 }

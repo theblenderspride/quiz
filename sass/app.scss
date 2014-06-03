@@ -43,9 +43,7 @@ input[type="radio"] {
 		padding: 20px;
 		background: #EFEFEF;
 		text-align: left;
-		div { 
-			width: 100%;
-		}
+
 		input {
 			width: 90%;
 			padding: 10px;		
@@ -54,12 +52,12 @@ input[type="radio"] {
 		    box-sizing:border-box;
     		-moz-box-sizing:border-box;
     		-webkit-box-sizing:border-box;
-
-		    &[type="button"] {
-		    	background-color: #9b58b5;
-		    	color: #FFF;
-		    }
 		}
+
+		div { 
+			width: 100%;
+		}
+		
 		div {
 			text-align: left;
 		}
@@ -78,7 +76,7 @@ input[type="radio"] {
 
 a {
 	text-decoration: none;
-	color: blue;	
+	color: rgb(33, 124, 209);
 }
 
 .question { 
@@ -92,6 +90,15 @@ a {
 		padding: 20px;
 		background-color: #ededed;	
 	}
+}
+
+form, .question {
+	input[type="button"] {
+		padding: 10px;		
+		width: 90%;
+		background-color: #9b58b5;
+		color: #FFF;
+	}	
 }
 
 .results {
